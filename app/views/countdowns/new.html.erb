@@ -1,0 +1,74 @@
+<div class="container">
+  <h1 class="title has-text-centered">Make A New Custom Countdown</h1>
+  <p class="has-text-centered">--</p>
+  <%= form_for @countdown do |f| %>
+    <div class="field">
+      <%= f.label :name, class: "label" %>
+      <div class="control">
+        <%= f.text_field :name, required: true, class: "input" %>
+      </div>
+    </div>
+
+    <div class="field">
+      <%= f.label :target_time, class: "label" %>
+      <%= f.hidden_field :target_time, class: "label" %>
+      <div class="control">
+        <div style="display: inline-block; vertical-align: top;">
+          <%= number_field_tag :target_month, 12, class: "input", min: 1, max: 12, style: "width: 100px;" %><br>
+          <span class="is-size-7">Month</span>
+        </div> /
+        <div style="display: inline-block; vertical-align: top;">
+          <%= number_field_tag :target_day, 31, class: "input", min: 1, max: 31, style: "width: 100px;" %><br>
+          <span class="is-size-7">Day</span>
+        </div> /
+        <div style="display: inline-block; vertical-align: top;">
+          <%= number_field_tag :target_year, 2020, class: "input", min: 2020, style: "width: 100px;" %><br>
+          <span class="is-size-7">Year</span>
+        </div>
+
+        <div style="display: inline-block; vertical-align: top;">
+          <div class="select"><%= select_tag :target_hour, options_for_select((1..12).to_a.map { |v| v.to_s.rjust(2, "0") }, 11) %></div>
+        </div>
+        <div style="display: inline-block; vertical-align: top;">
+          <div class="select"><%= select_tag :target_minute, options_for_select((0..59).to_a.map { |v| v.to_s.rjust(2, "0") }, 59) %></div>
+        </div>
+        <div style="display: inline-block; vertical-align: top;">
+          <div class="select"><%= select_tag :target_period, options_for_select(["AM", "PM"], "PM") %></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="field is-grouped">
+      <div class="control">
+        <%= f.label :color, class: "label" %>
+        <%= f.hidden_field :color, value: current_color %>
+        <div class="control">
+          <div id="color-selector-trigger" class="button">
+            <span id="color-selector-preview" class="input" style="width: 0%; height: 0%; margin-right: 0.25rem; display: inline-block; background: #<%= current_color %>;"></span> Select Color
+          </div>
+        </div>
+      </div>
+
+      <div class="control">
+        <%= f.label :font, class: "label" %>
+        <div class="select">
+          <%= f.select :font, options_for_select([:default]) %>
+        </div>
+      </div>
+    </div>
+
+    <div>
+      <%= f.submit class: "button" %>
+    </div>
+  <% end %>
+
+  <hr>
+  <div>
+    <div>
+      <strong>Preview</strong>
+      <p class="previewText"></p>
+      <%= countdown_display(5.minutes.from_now, true) %>
+    </div>
+
+  </div>
+</div>

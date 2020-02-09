@@ -1,0 +1,14 @@
+@import '~bulma';
+@import 'stylesheets/countdowns';
+@import '@simonwep/pickr/dist/themes/nano.min.css';
+
+html, body {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.container {
+  padding: 1rem;
+}
