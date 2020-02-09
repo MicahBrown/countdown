@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>CountdownApp</title>
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+
+    <%= stylesheet_pack_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+  </head>
+
+  <body>
+    <div class="has-text-centered" style="background: #7711bb;">
+      <%= link_to "CountdownTil", root_path, style: "padding: 0.25rem 0.75rem; background: #000; display: inline-block; font-weight: bold; color: #fff; font-size: 0.75rem;" %>
+    </div>
+
+    <%= yield %>
+  </body>
+</html>

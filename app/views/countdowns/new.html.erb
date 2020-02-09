@@ -1,0 +1,25 @@
+<div class="container">
+  <h1 class="title has-text-centered">Create A Countdown</h1>
+  <%= form_for Countdown.new do |f| %>
+    <div class="field">
+      <%= f.label :name, class: "label" %>
+      <div class="control">
+        <%= f.text_field :name, required: true, class: "input" %>
+      </div>
+    </div>
+
+    <div class="field">
+      <%= f.label :target_time, class: "label" %>
+      <div class="control">
+        <%= f.datetime_select :target_time, ampm: true, class: "input" %>
+      </div>
+    </div>
+
+    <%#= f.label :email, class: "label" %>
+    <%#= f.email_field :email, required: true, class: "input" %>
+
+    <div>
+      <%= f.submit class: "button" %>
+    </div>
+  <% end %>
+</div>
