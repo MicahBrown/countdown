@@ -1,0 +1,31 @@
+<section class="hero">
+  <div class="hero-body">
+    <div class="container has-text-centered">
+      <h1 class="title"><%= @countdown.title %></h1>
+
+      <%= countdown_display(@countdown.target_time) %>
+
+      <!-- <p>Would you like an email notification when the countdown is about to expired?</p> -->
+      <p>Share this page:</p>
+      <div class="field has-addons has-addons-centered">
+        <div class="control">
+          <%= text_field_tag :share, countdown_url(@countdown), class: "input", readonly: true %>
+        </div>
+        <div class="control">
+          <%= button_tag("Copy", class: "button copy-button", data: {clipboard_target: "#share"}) %>
+        </div>
+      </div>
+
+      <p class="small"><%= link_to "Make A New Countdown", root_path %><!-- &bull; --><%#= link_to "See Other Countdowns" %></p>
+    </div>
+  </div>
+</section>
+
+<style type="text/css">
+  body {
+    background: url("https://www.toptal.com/designers/subtlepatterns/patterns/grey.png");
+  }
+  .count {
+    background: #<%= @countdown.color %>;
+  }
+</style>
